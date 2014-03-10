@@ -1,7 +1,10 @@
 body {  
-	background: #ddd;
 	margin: 0px;
 	padding: 0px;
+	background: #0099CC url(../visuels/bgd.png) top left repeat-x;
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background: #0099CC url(../visuels/bgd.png) top left repeat-x;
 }
 p, h1, h2, h3, h4, h5, h6 {
 	margin: 0px;
@@ -21,6 +24,22 @@ a {
 	height: 6px;
 	overflow: hidden;
 	width:100%;
+}
+.header{
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	background: #333;
+}
+
+
+.footer{
+	width:100%;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	z-index:0;
+	background: #333;
 }
 .banner
 {
@@ -130,7 +149,7 @@ a {
 }
 .auction {
 	font-size: 24px;
-	color: #FFF;
+	color: #333;
 }
 .info_head {
 	font-size: 24px;

@@ -23,10 +23,10 @@
             media="(device-width: 320px) and (device-height: 568px)
             and (-webkit-device-pixel-ratio: 2)"
             href="visuels/startup_image_i5.png">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <link type="text/css" rel="stylesheet" href="css/mobile.css" />
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript">
         $( document ).bind( "mobileinit", function() {
@@ -36,9 +36,8 @@
             //$.mobile.selectmenu.prototype.options.nativeMenu = false;
         });
     </script>    
-    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="phonegap.js"></script>
-    <script src="childbrowser.js"></script>
 	<script src="js/plugins/Calendar.js"></script>
     <script src="barcodescanner.js"></script>
     <script src="PushNotification.js"></script>
@@ -46,6 +45,7 @@
     <script src="cdv-plugin-fb-connect.js"></script>
     <script src="facebook-js-sdk.js"></script>
     <!-- 
+    <script src="childbrowser.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
     <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
     <script type="text/javascript" src="js/marquee.js"></script>
@@ -181,7 +181,6 @@
 			});
         });
     </script>
-    <link type="text/css" rel="stylesheet" href="css/mobile.css" />
 	<style type="text/css">
         label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
     </style>
@@ -649,7 +648,7 @@
 		}
 		function justify(when, rdv, comments, destadd, cell)//justify(\''.$when.'\', \''.$rdv.'\', \''.$comments.'\', \''.$destadd.'\', \''.$cell.'\
 		{
-			$.post("https://ssl14.ovh.net/~taxibleu/client/justify.php", { when: when, rdv: rdv, comments: comments, destadd: destadd, cell: cell, dep: '', pass: pass, email: email }, function(data){
+			$.post("https://ssl14.ovh.net/~taxibleu/client/justify.php", { when: when, rdv: rdv, comments: comments, destadd: destadd, cell: cell, dep: '93', pass: pass, email: email }, function(data){
 				$.mobile.loading( "show" );
 				alert(data);
 				//window.plugins.childBrowser.showWebPage('http://www.taximedia.fr', { showLocationBar: true });
@@ -813,15 +812,18 @@
 
 		function taximedia()
 		{
-			window.plugins.childBrowser.showWebPage('http://www.taximedia.fr/redir.php', { showLocationBar: true });
+			//window.plugins.childBrowser.showWebPage('http://www.taximedia.fr/redir.php', { showLocationBar: true });
+			window.open('http://www.taximedia.fr/redir.php','_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer');
 		}
 		function help()
 		{
-			window.plugins.childBrowser.showWebPage('http://taxibleuservices.com/client/help.html', { showLocationBar: true });
+			//window.plugins.childBrowser.showWebPage('http://taxibleuservices.com/client/help.html', { showLocationBar: true });
+			window.open('http://taxibleuservices.com/client/help.html','_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer');
 		}
 		function cgv()
 		{
-			window.plugins.childBrowser.showWebPage('http://taxibleuservices.com/client/docs/CGV.pdf', { showLocationBar: true });
+			//window.plugins.childBrowser.showWebPage('http://taxibleuservices.com/client/docs/CGV.pdf', { showLocationBar: true });
+			window.open('http://taxibleuservices.com/client/docs/CGV.pdf','_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer');
 		}
 		
 		// Checks App or Browser
@@ -850,7 +852,10 @@
 			if (textFormats.match(result.format)) {                
 				var scanVal = result.text;
 				if (scanVal.indexOf("http") === 0) {
-					setTimeout(function() { window.plugins.childBrowser.showWebPage(result.text, { showLocationBar: true }); }, 500);
+					setTimeout(function() { 
+						//window.plugins.childBrowser.showWebPage(result.text, { showLocationBar: true }); 
+						window.open(result.text,'_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer');
+					}, 500);
 				} else {
 					navigator.notification.alert(
 							result.text,
@@ -998,11 +1003,12 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#home" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-role="content" id="home_cont">
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em; text-align: left;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em; text-align: left;">
                 <div style="text-align: left;">
                     <div id="dispo">
 						<a href="#home" onClick="Dispo_Off()"><img src="visuels/DispoOn_flat.png" width="100%"/></a>
@@ -1015,7 +1021,7 @@
                 </div>
                 </div>
                 <img src="visuels/p1.png" width="128"/>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
 					<a href="#history" data-transition="slide" style="width:32%;display:inline-block;">
                     	<p style="font-size: x-small;color:#FFF;">
                         	<img src="visuels/Historique_flat.png" width="90%"/><br>
@@ -1058,16 +1064,16 @@
                             Infos DCVP
                         </p>
                     </a>
-					<a href="#" onClick="taximedia()" data-ajax="false" data-transition="slide" style="width:32%;display:inline-block;">
+					<a href="#" onClick="taximedia()" data-transition="slide" style="width:32%;display:inline-block;">
                     	<p style="font-size: x-small;color:#FFF;">
                             <img src="visuels/TaxiMedia_flat.png" width="90%"/><br>
                             TaxiMedia.fr
                         </p>
                     </a>
-					<a href="mailto:info@taxibleuservices.com" style="width:32%;display:inline-block;">
+					<a href="dcvpad.html" data-ajax="false" style="width:32%;display:inline-block;">
                     	<p style="font-size: x-small;color:#FFF;">
-                            <img src="visuels/Contact_flat.png" width="90%"/><br>
-                            Contact
+                            <img src="visuels/Taxi.png" width="90%"/><br>
+                            Partager
                         </p>
                     </a>
                     <!-- N&rsquo;oubliez pas de vous rendre indisponible quand vous ne d&eacute;sirez plus prendre de courses, cela vous &eacute;vitera d&rsquo;&ecirc;tre importun&eacute; durant votre repos.<br> -->
@@ -1083,7 +1089,7 @@
                 <a href="#homepanel" id="homepanel_poper"></a>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont0" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1102,20 +1108,21 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#jobs_taker" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
-				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#jobs_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+				<h1 style="padding: 0; margin: 0;">
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a"><b>Retour</b></a>            
+                    <a href="#jobs_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
                 <div id="sound">
                     <a href="#jobs_taker" onClick="Sound_Off()"><img src="visuels/sound_on.png" width="20"/></a>
                 </div>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                     <div id="dispo_jobs">                                            
                     </div>
                     <div id="warn">
@@ -1123,7 +1130,7 @@
                     </div>
                 </div>
                 <img src="visuels/p2.png" width="128"/>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                     <h2 style="color:#0F0; font-size:large;">En attente de courses</h2><hr>
                     <div id="screen_job" style="text-align:left;">
                     </div>
@@ -1160,7 +1167,7 @@
                 <div id="results"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont1" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1178,13 +1185,14 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#delayPop" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#delay_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#delay_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
@@ -1208,7 +1216,7 @@
                 </div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont2" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1226,20 +1234,21 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#cmd" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#cmd_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#cmd_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
                 <div id="sound_cmd">
                     <a href="#cmd" onClick="Sound_Off()"><img src="visuels/sound_on.png" width="20"/></a>
                 </div>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                     <div id="dispo_cmd">                                            
                     </div>
                     <div id="warn_cmd">
@@ -1247,7 +1256,7 @@
                     </div>
                 </div>
                 <img src="visuels/p2.png" width="128"/>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                     <h2 style="color:#0CF; font-size:large;">En attente de commandes</h2><hr>
                     <div id="screen_job_cmd" style="text-align:left;">
                     </div>
@@ -1286,7 +1295,7 @@
                 <div id="results"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont3" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1304,13 +1313,14 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#planning" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#planning_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#history_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
@@ -1318,14 +1328,14 @@
                 	<p class="auction"><b>Courses command&eacute;es</b></p>
                 </div>
                 <img src="visuels/p3.png" width="128"/>
-                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                     <div id="plan_cont">
                     </div>
                </div>
                 <div id="results"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont4" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1333,16 +1343,17 @@
             <div data-role="panel" id="history_panel" data-position="left" data-display="push" data-theme="e">
                 <!-- panel content goes here -->
                 <ul data-role="listview" data-inset="true" data-theme="b">
-                  <li><a href="#home" data-transition="slide"><b>Accueil</b></a></li>
-                  <li><a href="#jobs_taker" data-transition="slide"><b>Courses directes</b></a></li>
-                  <li><a href="#cmd" data-transition="slide"><b>Courses command&eacute;es</b></a></li>
-                  <li><a href="#history" data-transition="slide"><b>Historique</b></a></li>
-                  <li><a href="#planning" data-transition="slide"><b>Planning</b></a></li>
-                  <li><a href="#manage" data-transition="slide"><b>Mon compte</b></a></li>
-                  <li><a href="#directions_map" data-transition="slide"><b>Carte GPS</b></a></li>
-                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
-                 <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
-                  <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                    <li><a href="#home" data-transition="slide"><b>Accueil</b></a></li>
+                    <li><a href="#jobs_taker" data-transition="slide"><b>Courses directes</b></a></li>
+                    <li><a href="#cmd" data-transition="slide"><b>Courses command&eacute;es</b></a></li>
+                    <li><a href="#history" data-transition="slide"><b>Historique</b></a></li>
+                    <li><a href="#planning" data-transition="slide"><b>Planning</b></a></li>
+                    <li><a href="#manage" data-transition="slide"><b>Mon compte</b></a></li>
+                    <li><a href="#directions_map" data-transition="slide"><b>Carte GPS</b></a></li>
+                    <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
+                    <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
+                    <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                    <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#history" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
@@ -1364,7 +1375,7 @@
                 <div id="results"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont5" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1382,13 +1393,14 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#infos" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#infos_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#infos_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
@@ -1396,7 +1408,7 @@
                 <div id="infos_cont"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont6" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1414,18 +1426,19 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#manage" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#manage_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"  style="width: 46%;"><b>Menu</b></a>
+                    <a data-rel="back" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#manage_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Menu</b></a>
                 </h1>
             </div>
             <div data-role="content">
                <div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em; text-align: left;">
-                    <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+                    <div data-role="collapsible-set" data-theme="b" data-content-theme="a">
                         <div data-role="collapsible" data-collapsed="true" id="mod_collaps">
                             <h1>
                                  Modifier mon compte
@@ -1587,7 +1600,7 @@
                 <div id="returns"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont7" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1606,17 +1619,18 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#manage" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
 			<div data-role="header">
-            	<a href="#home" data-transition="slide" style="color:#FFF;"><h1><b>Retour</b></h1></a>
+            	<a href="#home" data-theme="b" data-transition="slide" data-role="button" data-iconpos="left"><h1><b>Retour</b></h1></a>
                 <a href="#map_panel" id="mapPanel_poper" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b"><h1><b>Menu</b></h1></a>
 			</div>
             <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
             
 			<div data-role="content">	
-				<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1.5em;">
+				<div class="ui-bar-a ui-corner-all ui-shadow" style="padding:1.5em;">
 					<p>
 						<label for="from">D&eacute;part</label>
 						<input id="from" class="ui-bar-c" type="text" value="Marseille, France" />
@@ -1652,22 +1666,23 @@
                   <li><a href="#" onClick="help()" data-transition="slide"><b>Aide utilisateur</b></a></li>
                   <li><a href="#" onClick="taximedia()" data-transition="slide"><b>TaxiMedia.fr</b></a></li>
                   <li><a href="#infos" data-transition="slide"><b>Infos DCVP</b></a></li>
+                  <li><a href="dcvpad.html" data-ajax="false" data-transition="slide"><b>Envoyer une course</b></a></li>
                 </ul>
                 <a href="#toolate" data-rel="close" data-role="button" data-theme="a">Fermer</a>
             </div><!-- /panel -->
             <div data-theme="a" data-role="header" data-position="fixed">
 				<h1 style="width:100%; padding: 0; margin: 0;">
-                    <a href="#home" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" style="width: 46%;"><b>Retour</b></a>            
-                    <a href="#toolate_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" style="width: 46%;"><b>Accueil</b></a>
+                    <a href="#home" data-icon="back" data-iconpos="left" data-role="button" data-transition="slide" data-inline="true" data-theme="a" ><b>Retour</b></a>            
+                    <a href="#toolate_panel" data-role="button" data-iconpos="left" data-icon="home" data-transition="slide" data-inline="true" data-theme="b" ><b>Accueil</b></a>
                 </h1>
             </div>
             <div data-role="content">
-                <div id="late_cont" class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div id="late_cont" class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                </div>                    
                 <div id="results"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont8" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
@@ -1706,14 +1721,14 @@
                 </h1>
             </div>
             <div data-role="content">
-                <div id="urgent" class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                <div id="urgent" class="ui-bar-b ui-corner-all ui-shadow" style="padding:1em;">
                 	<h1 style="color: #F00;">Proc&eacute;dure d&rsquo;appel d&rsquo;urgence activ&eacute;e.</h1>
                     <input type="button" data-theme="c" data-icon="check" onClick="stopSecureCall()" value="ARRETER"/>
                </div>                    
                 <div id="urgencyResults"></div>
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont8" data-position="fixed">
-				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Proc&eacute;dure d&rsquo;appel d&rsquo;urgence activ&eacute;e.</b></marquee></div>
+				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Proc&eacute;dure d&rsquo;appel d&rsquo;urgence activ&eacute;e.</b></marquee></div>
             </div>
         </div>
         

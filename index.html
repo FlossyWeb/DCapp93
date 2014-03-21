@@ -620,12 +620,45 @@
                 </div>
                 <!-- HERE COMES ALL ANSWERS CONCERNING BOTH LOGIN AND REGISTERING METHODS -->
                 <div id="returns"></div>
+                <a href="#secureDialog" data-rel="popup" data-position-to="window" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <div data-role="popup" data-theme="a" id="secureDialog" data-dismissible="false" data-overlay-theme="b">
+                    <div data-theme="a" data-role="header">
+                        <h1>
+                            Confirmation
+                        </h1>
+                    </div>
+                    <div data-role="content">
+                        <h1>Lancer l&rsquo;appel d&rsquo;urgence ?</h1>
+                        <input type="button" data-theme="b" data-icon="check" onClick="getLocationOnce()" value="CONFIRMER"/>
+                        <a href="#home" data-rel="back" data-icon="delete" data-role="button" data-transition="slideUp" data-theme="a">ANNULER</a>            
+                        <div id="secureResults"></div>
+                    </div>
+                </div>        
             </div>
             <div data-theme="a" data-role="footer" id="footer_cont" data-position="fixed">
 				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
             </div>
         </div>
+        
+        <div data-role="page" data-theme="a" id="urgency">
+            <div data-theme="a" data-role="header" data-position="fixed">
+				<h1 style="width:100%; padding: 0; margin: 0; color: #F00;">
+                	URGENCE
+                </h1>
+            </div>
+            <div data-role="content">
+                <div id="urgent" class="ui-bar-a ui-corner-all ui-shadow" style="padding:1em;">
+                	<h1 style="color: #F00;">Proc&eacute;dure d&rsquo;appel d&rsquo;urgence activ&eacute;e.</h1>
+                    <input type="button" data-theme="c" data-icon="check" onClick="stopSecureCall()" value="ARRETER"/>
+               </div>                    
+                <div id="urgencyResults"></div>
+            </div>
+            <div data-theme="a" data-role="footer" id="footer_cont8" data-position="fixed">
+				<div class="ui-bar-a ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Proc&eacute;dure d&rsquo;appel d&rsquo;urgence activ&eacute;e.</b></marquee></div>
+            </div>
+        </div>
+        
     </center>
     </body>
 </html>

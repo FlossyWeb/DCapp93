@@ -82,7 +82,7 @@
 	var sec;
 	var taxi = $.localStorage.getItem('taxi');
 	var tel = $.localStorage.getItem('tel');
-	var mobileMap = { 'center': '43.298977,5.386320', 'zoom': 12 };
+	var mobileMap = { 'center': '48.9333, 2.3667', 'zoom': 12 };
 	
 	////////////////////////////////////////////////////////////
 	
@@ -246,7 +246,7 @@
 		url = '';
 		num_req = idcourse;
 		i = 0; // We need to make any numreq unique on that one !!
-		$.post("https://ssl14.ovh.net/~taxibleu/server/app_dcvp_xml.php", { lat: rdvlat, lng: rdvlng, type: typecar, howmany: howMany, cb: cb, group: '1', dep: '', pass: 'true'}, function(xml){	
+		$.post("https://ssl14.ovh.net/~taxibleu/server/app_dcvp_xml.php", { lat: rdvlat, lng: rdvlng, type: typecar, howmany: howMany, cb: cb, group: '1', dep: '93', pass: 'true'}, function(xml){	
 			$(xml).find('marker').each(function(){
 				var name = $(this).attr('name');
 				var address = $(this).attr('address');
@@ -264,14 +264,14 @@
 					mapEvent.openInfoWindow({ 'content':  infoCont}, this);
 				});
 				//mapEvent.addBounds(latlng);
-				url = 'taxi=' + name + '&tel=' + address + '&idcourse=' + idcourse + '&num_req=' + num_req + '&rdvpoint=' + rdvpoint + '&lat=' + rdvlat + '&lng=' + rdvlng + '&comments=' + comments + '&cell=' + cell + '&when=' + when + '&date=' + date + '&operator=' + operator + '&group=1&ack=0&db=1';
+				url = 'taxi=' + name + '&tel=' + address + '&idcourse=' + idcourse + '&num_req=' + num_req + '&rdvpoint=' + rdvpoint + '&lat=' + rdvlat + '&lng=' + rdvlng + '&comments=' + comments + '&cell=' + cell + '&when=' + when + '&date=' + date + '&operator=' + operator + '&dep=93&group=1&ack=0&db=1';
 				url = url.replace(/'/g, "&rsquo;");
 				//$.post("https://ssl14.ovh.net/~taxibleu/server/diary_app_share.php", url, function(data) {});
 				$('#dblinks').append($('<input class="cabs" id="' + i + '" type="hidden" onclick="sendJob(\''+ url +'\')" />'));
 			});
 			num_req = num_req+1;
 			i = i+1;
-			url = 'taxi=0000&tel=0000000000&idcourse=' + idcourse + '&num_req=' + num_req + '&rdvpoint=' + rdvpoint + '&lat=' + rdvlat + '&lng=' + rdvlng + '&comments=' + comments + '&cell=' + cell + '&when=' + when + '&date=' + date + '&operator=' + operator + '&group=1&ack=0&db=1';
+			url = 'taxi=0000&tel=0000000000&idcourse=' + idcourse + '&num_req=' + num_req + '&rdvpoint=' + rdvpoint + '&lat=' + rdvlat + '&lng=' + rdvlng + '&comments=' + comments + '&cell=' + cell + '&when=' + when + '&date=' + date + '&operator=' + operator + '&dep=93&group=1&ack=0&db=1';
 			url = url.replace(/'/g, "&rsquo;");
 			// Sends Auction Request to TaxiMedia Server
 			$('#dblinks').append($('<input class="cabs" id="' + i + '" type="hidden" onclick="sendJob(\''+ url +'\')" />'));
@@ -299,7 +299,7 @@
     function check_answer()
     {
         sec = setInterval( function () {
-            $.post("https://ssl14.ovh.net/~taxibleu/server/status.php?idcourse=" + idcourse + "&check=1" , {}, function(data){ 
+            $.post("https://ssl14.ovh.net/~taxibleu/server93/status.php?idcourse=" + idcourse + "&check=1" , {}, function(data){ 
                 if (data != 0)
                 {
                     clearInterval(sec);
@@ -331,7 +331,7 @@
     function cancel(idcourse)
     {
 		//alert(idcourse);
-        $.post("https://ssl14.ovh.net/~taxibleu/server/diary.php?idcourse=" + idcourse + "&ack=1&db=1&cab_wont=1&del=1"); 
+        $.post("https://ssl14.ovh.net/~taxibleu/server93/diary.php?idcourse=" + idcourse + "&ack=1&db=1&cab_wont=1&del=1"); 
     }        
 	function stopCall()
 	{

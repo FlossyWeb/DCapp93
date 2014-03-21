@@ -1079,7 +1079,20 @@
                     <!-- N&rsquo;oubliez pas de vous rendre indisponible quand vous ne d&eacute;sirez plus prendre de courses, cela vous &eacute;vitera d&rsquo;&ecirc;tre importun&eacute; durant votre repos.<br> -->
                 </div>
                 <div id="results"></div>
-                <a href="#secureDialog" data-rel="dialog" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <a href="#secureDialog" data-rel="popup" data-position-to="window" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <div data-role="popup" data-theme="a" id="secureDialog" data-dismissible="false" data-overlay-theme="b">
+                    <div data-theme="a" data-role="header">
+                        <h1>
+                            Confirmation
+                        </h1>
+                    </div>
+                    <div data-role="content">
+                        <h1>Lancer l&rsquo;appel d&rsquo;urgence ?</h1>
+                        <input type="button" data-theme="b" data-icon="check" onClick="getLocationOnce()" value="CONFIRMER"/>
+                        <a href="#home" data-rel="back" data-icon="delete" data-role="button" data-transition="slideUp" data-theme="a">ANNULER</a>            
+                        <div id="secureResults"></div>
+                    </div>
+                </div>        
                 <div id="player_home">
                     <audio id="play_home" loop="loop" preload="auto" style="display:none" >
                         <source src="http://www.taxibleuservices.com/client/sounds/ring.mp3" type="audio/mpeg" />
@@ -1156,7 +1169,20 @@
                     </a>
                 </div>
                 <div class="cleaner"></div>
-                <a href="#secureDialog" data-rel="dialog" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <a href="#secureDialogJobs" data-rel="popup" data-position-to="window" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <div data-role="popup" data-theme="a" id="secureDialogJobs" data-dismissible="false" data-overlay-theme="b">
+                    <div data-theme="a" data-role="header">
+                        <h1>
+                            Confirmation
+                        </h1>
+                    </div>
+                    <div data-role="content">
+                        <h1>Lancer l&rsquo;appel d&rsquo;urgence ?</h1>
+                        <input type="button" data-theme="b" data-icon="check" onClick="getLocationOnce()" value="CONFIRMER"/>
+                        <a href="#home" data-rel="back" data-icon="delete" data-role="button" data-transition="slideUp" data-theme="a">ANNULER</a>            
+                        <div id="secureResults"></div>
+                    </div>
+                </div>        
                 <div id="player">
                 
                     <audio id="play" loop="loop" preload="auto" style="display:none;">
@@ -1285,7 +1311,20 @@
                     -->
                </div>
                <div class="cleaner"></div>
-                <a href="#secureDialog" data-rel="dialog" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <a href="#secureDialogCmd" data-rel="popup" data-position-to="window" data-role="button" class="secure-bt" data-theme="b" data-icon="alert">Bouton d&rsquo;urgence</a>
+                <div data-role="popup" data-theme="a" id="secureDialogCmd" data-dismissible="false" data-overlay-theme="b">
+                    <div data-theme="a" data-role="header">
+                        <h1>
+                            Confirmation
+                        </h1>
+                    </div>
+                    <div data-role="content">
+                        <h1>Lancer l&rsquo;appel d&rsquo;urgence ?</h1>
+                        <input type="button" data-theme="b" data-icon="check" onClick="getLocationOnce()" value="CONFIRMER"/>
+                        <a href="#home" data-rel="back" data-icon="delete" data-role="button" data-transition="slideUp" data-theme="a">ANNULER</a>            
+                        <div id="secureResults"></div>
+                    </div>
+                </div>        
                 <div id="player_cmd">
                     <audio id="play_cmd" loop="loop" preload="auto" style="display:none" >
                         <source src="http://www.taxibleuservices.com/client/sounds/ring.mp3" type="audio/mpeg" />
@@ -1684,19 +1723,6 @@
             <div data-theme="a" data-role="footer" id="footer_cont8" data-position="fixed">
 				<div class="ui-bar-b ui-corner-all ui-shadow" style="width:96%;height:19px;"><marquee><b>Mise &agrave; jour des information DCVP en cours.</b></marquee></div>
                 <p class="copyright" style="font-size:xx-small">&copy; 2012 - </p>
-            </div>
-        </div>
-        
-        <div data-role="dialog" data-theme="e" id="secureDialog">
-            <div data-theme="a" data-role="header">
-				<h1>
-                	Confirmation
-                </h1>
-            </div>
-            <div data-role="content">
-            	<h1>Lancer l&rsquo;appel d&rsquo;urgence ?</h1>
-                <input type="button" data-theme="b" data-icon="check" onClick="secureCall()" value="CONFIRMER"/>
-                <a href="#home" data-rel="back" data-icon="delete" data-role="button" data-transition="slideUp" data-theme="c">ANNULER</a>            
             </div>
         </div>
         
